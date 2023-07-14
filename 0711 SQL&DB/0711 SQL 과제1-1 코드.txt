@@ -1,0 +1,7 @@
+SELECT Customers.CustomerID, Customers.CustomerName, SUM(OrderDetails.Quantity * Products.Price) AS TotalCost
+FROM Customers
+JOIN Orders ON Customers.CustomerID = Orders.CustomerID
+JOIN OrderDetails ON Orders.OrderID = OrderDetails.OrderID
+JOIN Products ON Products.productID = OrderDetails.productID
+GROUP BY Customers.CustomerID, Customers.customerName
+ORDER BY TotalCost DESC;
